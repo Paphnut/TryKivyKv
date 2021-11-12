@@ -1,0 +1,199 @@
+<MyImage@Image>:
+    keep_ratio: False
+    allow_stretch: True
+
+<Accor>:
+    orientation: 'vertical'
+    AccordionItem:
+        id:item1
+        title:'Категория дела?'
+
+        AnchorLayout:
+            GridLayout:
+                size_hint:.9,.9
+                size_min:300,500
+                cols:2
+
+                Label:
+                    text_size: self.size
+                    halign:'left'
+                    valign:'middle'
+                    font_size:18
+                    text:'-в суде присяжных;\n-в Верховном суде РФ;\n-в суде общей юрисдикции;\n-в суде субъекта РФ;\n-в окружном (флотском) военном суде'
+                CheckBox:
+                    group:'categ'
+                    on_active:root.checkbox_click(self, self.active, '1cat')
+
+                Label:
+                    text_size:self.size
+                    halign:'left'
+                    valign:'middle'
+                    font_size:18
+                    text:'-3 и более \"фигуранта\"\n-3 и более \"преступления\"\n- дело более 3 томов.'
+                CheckBox:
+                    group:'categ'
+                    on_active:root.checkbox_click(self, self.active, '2cat')
+
+                Label:
+                    text_size:self.size
+                    halign:'left'
+                    valign:'middle'
+                    font_size:18
+                    text:'-в закрытых или \"выездных\" заседаниях;\n-несовершеннолетние \"фигуранты\";\n-потерпевшие до 16 лет;\n-\"фигурант\" не владеет языком;\n-\"фигурант\" не способен защищаться.'
+                CheckBox:
+                    group:'categ'
+                    on_active: root.checkbox_click(self, self.active, '3cat')
+
+                Label:
+                    text_size:self.size
+                    halign:'left'
+                    valign:'middle'
+                    font_size:18
+                    text:'Простая категория'
+                CheckBox:
+                    group:'categ'
+                    on_active:root.checkbox_click(self, self.active, '4cat')
+
+    AccordionItem:
+        id:item2
+        title: 'Дней участия?'
+        AnchorLayout:
+            BoxLayout:
+                orientation:'vertical'
+                size_hint:.9,.9
+                BoxLayout:
+                    orientation:'vertical'
+                    Label:
+                        font_size:30
+                        text:'Дни участия в деле:'
+                    BoxLayout:
+                        orientation:'horizontal'
+                        padding:60,10
+                        Button:
+                            id:min1
+                            text:'-'
+                            font_size:30
+                            meaning:'-1'
+                        TextInput:
+                            id: days1
+                            multiline: 0
+                            font_size:20
+                            text:'3'
+                            padding:5
+                            halign:'center'
+                            valign:'middle'
+                        Button:
+                            id:plu1
+                            font_size:30
+                            text:'+'
+                            meaning:'1'
+                BoxLayout:
+                    orientation:'vertical'
+                    Label:
+                        font_size:30
+                        text:'из них нерабочие(в т.ч. ночью):'
+                    BoxLayout:
+                        orientation:'horizontal'
+                        padding:60,10
+                        Button:
+                            id:min2
+                            text:'-'
+                            font_size:30
+                            meaning:'-1'
+                        TextInput:
+                            id: days2
+                            multiline: 0
+                            font_size:20
+                            text:'0'
+                            padding:5
+                            halign:'center'
+                            valign:'middle'
+                        Button:
+                            id:plu2
+                            font_size:30
+                            text:'+'
+                            meaning:'1'
+
+                BoxLayout:
+                    orientation:'vertical'
+                    Label:
+                        font_size:30
+                        text: 'в рабочие дни ночью:'
+                    BoxLayout:
+                        orientation: 'horizontal'
+                        padding:60,10
+                        Button:
+                            id:min3
+                            font_size:30
+                            text:'-'
+                            meaning:'-1'
+                        TextInput:
+                            id: days3
+                            multiline:0
+                            font_size:20
+                            padding:5
+                            text:'0'
+                            halign:'center'
+                        Button:
+                            id:plu3
+                            font_size:30
+                            text:'+'
+                            meaning:'1'
+
+                        Button:
+                            id: submit2
+                            font_size: 30
+                            text: 'Далее...'
+    AccordionItem:
+        id:item3
+        title: 'Проц.надбавки и рай.коэффициенты?'
+        AnchorLayout:
+            BoxLayout:
+                size_hint:.9,.9
+                orientation:'horizontal'
+                Label:
+                    text: 'Введите причитающуюся\nдоплату в процентах!'
+                    font_size:20
+                TextInput:
+                    id:'premium'
+                    text:'15'
+                    multiline: 0
+                    font_size: 20
+                    padding: 5
+                    halign: 'center'
+                BoxLayout:
+                    orientation:'vertical'
+                    Label:
+                        text: '%'
+                        font_size: 20
+                Button:
+                    id: submit3
+                    font_size: 20
+                    text: 'Расчитать итог...'
+    AccordionItem:
+        id:item4
+        title: 'Итоговый расчет!'
+        AnchorLayout:
+            BoxLayout:
+                orientation: 'vertical'
+                Label:
+                    text:'Итоговая сумма:'
+                    font_size:20
+                TextInput:
+                    id:resultat
+                    size_hint:1,.9
+                    padding: 15
+                    halign:'center'
+                    valign:'middle'
+                    font_size:50
+                    multiline:0
+                Label:
+                    text:'Формула расчета:'
+                    font_size:20
+                TextInput:
+                    multiline:0
+                    size_hint:1,.9
+                    padding:15
+                    halign:'center'
+                    valign:'middle'
+                    font_size:30
